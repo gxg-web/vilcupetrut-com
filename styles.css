@@ -373,8 +373,8 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  /* center — not top — so portrait isn’t cropped at the chin */
+  /* Scale down to fit; letterbox/pillarbox on #020202 instead of cropping */
+  object-fit: contain;
   object-position: center center;
 }
 
