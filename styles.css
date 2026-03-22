@@ -152,7 +152,7 @@ body {
 .layout {
   flex: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); /* 60% / 40% */
   gap: clamp(1.5rem, 4vw, 3.5rem);
   align-items: start;
   width: 100%;
@@ -352,10 +352,10 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(var(--green-faint) 1px, transparent 1px),
-    linear-gradient(90deg, var(--green-faint) 1px, transparent 1px);
+    linear-gradient(rgba(0, 255, 102, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 102, 0.16) 1px, transparent 1px);
   background-size: 24px 24px;
-  opacity: 0.25;
+  opacity: 0.4;
   animation: grid-pulse 5s ease-in-out infinite;
   pointer-events: none;
 }
@@ -363,10 +363,10 @@ body {
 @keyframes grid-pulse {
   0%,
   100% {
-    opacity: 0.18;
+    opacity: 0.32;
   }
   50% {
-    opacity: 0.32;
+    opacity: 0.5;
   }
 }
 
@@ -434,11 +434,14 @@ body {
 @media (max-width: 900px) {
   .layout {
     grid-template-columns: 1fr;
-    gap: clamp(1.25rem, 4vw, 2rem);
+    gap: 0;
+    row-gap: 0;
   }
 
   .visual {
     order: -1;
+    position: relative;
+    z-index: 1;
     height: auto !important;
     max-height: none !important;
   }
@@ -446,6 +449,40 @@ body {
   .visual__frame {
     height: min(48vh, 420px);
     min-height: 0;
+  }
+
+  /* Panel sits slightly over the video; no solid black fill */
+  .panel {
+    position: relative;
+    z-index: 2;
+    margin-top: clamp(-2.75rem, -7vw, -1.5rem);
+    padding-top: clamp(1rem, 3vw, 1.5rem);
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 -6px 28px rgba(0, 0, 0, 0.28);
+  }
+
+  .panel .panel__name,
+  .panel .panel__role,
+  .panel .panel__motto,
+  .panel .panel__meta,
+  .panel .panel__eyebrow,
+  .panel .panel__footer {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 18px rgba(0, 0, 0, 0.6);
+  }
+
+  .panel .panel__name {
+    text-shadow:
+      0 0 24px var(--green-glow),
+      0 2px 8px rgba(0, 0, 0, 0.85);
+  }
+
+  .local-file-hint {
+    background: rgba(0, 20, 8, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
   }
 
   .panel__meta li {
