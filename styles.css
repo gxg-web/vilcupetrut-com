@@ -464,9 +464,12 @@ body {
     box-shadow: 0 -6px 28px rgba(0, 0, 0, 0.28);
   }
 
+  .panel__motto {
+    display: none;
+  }
+
   .panel .panel__name,
   .panel .panel__role,
-  .panel .panel__motto,
   .panel .panel__meta,
   .panel .panel__eyebrow,
   .panel .panel__footer {
