@@ -1,6 +1,7 @@
 /* Romanian Security Systems — landing (military tech / HUD) */
 
 :root {
+  --site-max-width: 1432px;
   --bg: #000000;
   --green: #00ff66;
   --green-dim: rgba(0, 255, 102, 0.55);
@@ -70,6 +71,10 @@ body {
 .shell {
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--site-max-width);
+  margin-inline: auto;
   min-height: 100dvh;
   padding: clamp(1.25rem, 4vw, 2.5rem);
   display: flex;
@@ -150,9 +155,7 @@ body {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
   gap: clamp(1.5rem, 4vw, 3.5rem);
   align-items: start;
-  max-width: 1280px;
   width: 100%;
-  margin: 0 auto;
 }
 
 .panel {
@@ -375,9 +378,9 @@ body {
   height: 100%;
   object-fit: contain;
   object-position: center center;
-  /* Drop top/bottom 10% of frame, then zoom middle 80% to fill (×1.25) */
-  clip-path: inset(10% 0 10% 0);
-  transform: scale(1.25);
+  /* Crop top 10% only; shift framing up 10%; scale to fill (100/90) */
+  clip-path: inset(10% 0 0 0);
+  transform: scale(1.111111) translateY(-10%);
   transform-origin: center center;
 }
 
