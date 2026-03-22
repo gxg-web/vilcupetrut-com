@@ -455,7 +455,7 @@ body {
   .panel {
     position: relative;
     z-index: 2;
-    margin-top: clamp(-2.75rem, -7vw, -1.5rem);
+    margin-top: clamp(-3.5rem, -9vw, -2rem);
     padding-top: clamp(1rem, 3vw, 1.5rem);
     background: transparent;
     box-shadow: none;
