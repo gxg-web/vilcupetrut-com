@@ -373,9 +373,12 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
-  /* Scale down to fit; letterbox/pillarbox on #020202 instead of cropping */
   object-fit: contain;
   object-position: center center;
+  /* Drop top/bottom 10% of frame, then zoom middle 80% to fill (×1.25) */
+  clip-path: inset(10% 0 10% 0);
+  transform: scale(1.25);
+  transform-origin: center center;
 }
 
 .visual__video {
