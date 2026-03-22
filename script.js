@@ -177,4 +177,37 @@
       iterations += 1 / 3;
     }, 30);
   });
+
+  /* Video column height ≤ left panel (two-column layout only) */
+  var panelEl = document.querySelector(".panel");
+  var visualEl = document.querySelector(".visual");
+  var mqDesktop = window.matchMedia("(min-width: 901px)");
+
+  function syncVisualHeightToPanel() {
+    if (!panelEl || !visualEl) return;
+    if (!mqDesktop.matches) {
+      visualEl.style.height = "";
+      visualEl.style.maxHeight = "";
+      return;
+    }
+    var h = panelEl.offsetHeight;
+    if (h > 0) {
+      visualEl.style.height = h + "px";
+      visualEl.style.maxHeight = h + "px";
+    }
+  }
+
+  if (panelEl && visualEl && typeof ResizeObserver !== "undefined") {
+    new ResizeObserver(syncVisualHeightToPanel).observe(panelEl);
+    window.addEventListener("resize", syncVisualHeightToPanel);
+    if (mqDesktop.addEventListener) {
+      mqDesktop.addEventListener("change", syncVisualHeightToPanel);
+    } else if (mqDesktop.addListener) {
+      mqDesktop.addListener(syncVisualHeightToPanel);
+    }
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(syncVisualHeightToPanel);
+    }
+    syncVisualHeightToPanel();
+  }
 })();
