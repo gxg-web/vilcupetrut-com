@@ -374,7 +374,8 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  /* center — not top — so portrait isn’t cropped at the chin */
+  object-position: center center;
 }
 
 .visual__video {
