@@ -55,8 +55,8 @@
   function wireVideo() {
     if (!video) return;
 
-    /* +30% playback speed (browser-supported; pitch may shift on some engines) */
-    video.playbackRate = 1.3;
+    /* 1.5× playback speed (browser-supported; pitch may shift on some engines) */
+    video.playbackRate = 1.5;
 
     video.addEventListener("ended", function () {
       freezeOnLastFrame();
